@@ -1,0 +1,88 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = DeliveryCart
+build_property.RootNamespace = DeliveryCart
+build_property.ProjectDir = C:\Users\teaan\Documents\CIDM 4390\Assignment 2\DeliveryCart\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\teaan\Documents\CIDM 4390\Assignment 2\DeliveryCart
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/Customer/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/Customer/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/Customer/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/Customer/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/Customer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/Delivery Person/AddItem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcnkgUGVyc29uXEFkZEl0ZW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/Delivery Person/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcnkgUGVyc29uXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/Delivery Person/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcnkgUGVyc29uXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/Delivery Person/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcnkgUGVyc29uXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/Delivery Person/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcnkgUGVyc29uXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/Delivery Person/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcnkgUGVyc29uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 2/DeliveryCart/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-tgw3svdg09

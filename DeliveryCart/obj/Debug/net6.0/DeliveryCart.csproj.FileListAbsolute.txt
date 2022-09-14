@@ -1,0 +1,8 @@
+C:\Users\teaan\Documents\CIDM 4390\Assignment 2\DeliveryCart\obj\Debug\net6.0\DeliveryCart.csproj.AssemblyReference.cache
+C:\Users\teaan\Documents\CIDM 4390\Assignment 2\DeliveryCart\obj\Debug\net6.0\DeliveryCart.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\teaan\Documents\CIDM 4390\Assignment 2\DeliveryCart\obj\Debug\net6.0\DeliveryCart.AssemblyInfoInputs.cache
+C:\Users\teaan\Documents\CIDM 4390\Assignment 2\DeliveryCart\obj\Debug\net6.0\DeliveryCart.AssemblyInfo.cs
+C:\Users\teaan\Documents\CIDM 4390\Assignment 2\DeliveryCart\obj\Debug\net6.0\DeliveryCart.csproj.CoreCompileInputs.cache
+C:\Users\teaan\Documents\CIDM 4390\Assignment 2\DeliveryCart\obj\Debug\net6.0\DeliveryCart.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\teaan\Documents\CIDM 4390\Assignment 2\DeliveryCart\obj\Debug\net6.0\DeliveryCart.RazorAssemblyInfo.cache
+C:\Users\teaan\Documents\CIDM 4390\Assignment 2\DeliveryCart\obj\Debug\net6.0\DeliveryCart.RazorAssemblyInfo.cs
