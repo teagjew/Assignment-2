@@ -7,25 +7,44 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Assignment_2.Models;
 
-namespace Assignment_2.Pages.Orders
+namespace Assignment_2.Pages.Customer
 {
     public class IndexModel : PageModel
     {
-        private readonly Assignment_2.Models.OrderContext _context;
+        private readonly Assignment_2.Models.DatabaseContext _context;
 
-        public IndexModel(Assignment_2.Models.OrderContext context)
+        public IndexModel(Assignment_2.Models.DatabaseContext context)
         {
             _context = context;
         }
 
-        public IList<Order> Order { get;set; } = default!;
+        public IList<Item> Items { get; set; }
+
+        [BindProperty]
+        public int ItemToAdd { get; set; }
 
         public async Task OnGetAsync()
         {
-            if (_context.Order != null)
+            if (_context.Item != null)
             {
-                Order = await _context.Order.ToListAsync();
+                Items = await _context.Item.ToListAsync();
             }
+        }
+
+        public void OnPostAddItem(int id)
+        {
+            Item item = new Item() { ItemID = id, Status = "In Cart" };
+            
+            using(_context)
+            {
+                _context.Item.Attach(item).Property(i => i.Status).IsModified = true;
+                _context.SaveChanges();
+            }
+
+            foreach(var it in Items){
+                Items.Add(_context.Item.FirstOrDefault(i => i.ItemID == it.ItemID));
+            }
+
         }
     }
 }

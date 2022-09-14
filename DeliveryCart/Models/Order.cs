@@ -22,6 +22,8 @@ namespace Assignment_2.Models
         [Required]
         public double OrderTotal {get; set;}
 
-        public List<Item> Items {get; set;}
+        public string Status {get; set;}
+
+        public List<OrderedItem> OrderedItems {get; set;}
     }
 }

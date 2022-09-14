@@ -7,13 +7,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Assignment_2.Models;
 
-namespace Assignment_2.Pages.Orders
+namespace Assignment_2.Pages.DeliveryPerson
 {
     public class DetailsModel : PageModel
     {
-        private readonly Assignment_2.Models.OrderContext _context;
+        private readonly Assignment_2.Models.DatabaseContext _context;
 
-        public DetailsModel(Assignment_2.Models.OrderContext context)
+        public DetailsModel(Assignment_2.Models.DatabaseContext context)
         {
             _context = context;
         }
@@ -29,7 +29,7 @@ namespace Assignment_2.Pages.Orders
                 return NotFound();
             }
 
-            Order = await _context.Order.Include(m => m.Items).FirstOrDefaultAsync(m => m.OrderID == id);
+            Order = await _context.Order.Include(m => m.OrderedItems).FirstOrDefaultAsync(m => m.OrderID == id);
 
             if (Order == null)
             {
@@ -53,7 +53,7 @@ namespace Assignment_2.Pages.Orders
                 _context.SaveChanges();
             }
 
-            Order = _context.Order.Include(m => m.Items).FirstOrDefault(m => m.OrderID == id);
+            Order = _context.Order.Include(m => m.OrderedItems).FirstOrDefault(m => m.OrderID == id);
 
             return Page();
         }        

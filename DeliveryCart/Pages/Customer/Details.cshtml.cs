@@ -7,20 +7,24 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Assignment_2.Models;
 
-namespace Assignment_2.Pages.Orders
+namespace Assignment_2.Pages.Customer
 {
     public class DetailsModel : PageModel
     {
-        private readonly Assignment_2.Models.OrderContext _context;
+        private readonly ILogger<DetailsModel> _logger;
 
-        public DetailsModel(Assignment_2.Models.OrderContext context)
+        private readonly Assignment_2.Models.DatabaseContext _context;
+
+        public DetailsModel(Assignment_2.Models.DatabaseContext context, ILogger<DetailsModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
-        public Order Order { get; set; }
+        public Item Item { get; set; }
+
         [BindProperty]
-        public int ItemIDToDelete {get; set;}
+        public int ItemToAdd { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,33 +33,13 @@ namespace Assignment_2.Pages.Orders
                 return NotFound();
             }
 
-            Order = await _context.Order.Include(m => m.Items).FirstOrDefaultAsync(m => m.OrderID == id);
+            Item = await _context.Item.FirstOrDefaultAsync(i => i.ItemID == id);
 
-            if (Order == null)
+            if (Item == null)
             {
                 return NotFound();
             }
             return Page();
-        }
-
-        public IActionResult OnPostDeleteItem(int? id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            Item Item = _context.Item.FirstOrDefault(r => r.ItemID == ItemIDToDelete);
-            
-            if (Item != null)
-            {
-                _context.Remove(Item);
-                _context.SaveChanges();
-            }
-
-            Order = _context.Order.Include(m => m.Items).FirstOrDefault(m => m.OrderID == id);
-
-            return Page();
-        }        
+        }    
     }
 }

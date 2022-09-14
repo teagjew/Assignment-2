@@ -7,13 +7,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Assignment_2.Models;
 
-namespace Assignment_2.Pages.Orders
+namespace Assignment_2.Pages.DeliveryPerson
 {
     public class IndexModel : PageModel
     {
-        private readonly Assignment_2.Models.OrderContext _context;
+        private readonly Assignment_2.Models.DatabaseContext _context;
 
-        public IndexModel(Assignment_2.Models.OrderContext context)
+        public IndexModel(Assignment_2.Models.DatabaseContext context)
         {
             _context = context;
         }

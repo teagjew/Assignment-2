@@ -1,0 +1,73 @@
+@page
+@model Assignment_2.Pages.Customer.CartModel
+
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h1>Cart</h1>
+
+<h4>Order</h4>
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Items[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Items[0].Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Items) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <form method="post">
+                    <input type="hidden" asp-for="ItemToDelete" value="@item.ItemID" />
+                    <input type="submit" asp-page-handler="DeleteItem" asp-route-id="@item.ItemID" value="Delete" class="btn btn-danger btn-sm" />
+                </form>
+            }  
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label"></label>
+                <input asp-for="CustomerName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerAddress" class="control-label"></label>
+                <input asp-for="CustomerAddress" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" asp-page-handler="CreateOrder" Value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<hr />
+@if (Model.CustomerName != null)
+{
+    <p>Order has been submitted!</p>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<a asp-page="./Index">View Items</a>
+

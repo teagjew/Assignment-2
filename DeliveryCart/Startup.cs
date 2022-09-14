@@ -27,8 +27,8 @@ namespace Assignment_2
         {
             services.AddRazorPages();
 
-            services.AddDbContext<OrderContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("OrderContext")));
+            services.AddDbContext<DatabaseContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("DatabaseContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,10 +56,6 @@ namespace Assignment_2
             {
                 endpoints.MapRazorPages();
             });
-
-            //dotnet ef migrations add InitialCreate 
-            //dotnet ef database update
-
         }
     }
 }

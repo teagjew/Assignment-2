@@ -18,7 +18,8 @@ namespace Assignment_2.Models
         [Required]
         public double Price {get; set;}
 
-        public int OrderID {get; set;} // Foreign Key
-        public Order Order {get; set;} // Navigation Property
+        public string Status { get; set; }
+
+        public List<OrderedItem> OrderedItems { get; set; }
     }
 }

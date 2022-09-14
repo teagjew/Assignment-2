@@ -1,5 +1,5 @@
 @page
-@model Assignment_2.Pages.Orders.DetailsModel
+@model Assignment_2.Pages.DeliveryPerson.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
@@ -30,13 +30,13 @@
             @Html.DisplayFor(model => model.Order.OrderTotal)
         </dd>
 
-        @foreach(var r in Model.Order.Items)
+        @foreach(var r in Model.Order.OrderedItems)
         {
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => r.Name)
+                @Html.DisplayNameFor(model => r.Item.Name)
             </dt>
             <dd class="col-sm-1">
-                @Html.DisplayFor(model => r.Name)
+                @Html.DisplayFor(model => r.Item.Name)
             </dd>
             <dt class="col-sm-9">
                 <form method="post">

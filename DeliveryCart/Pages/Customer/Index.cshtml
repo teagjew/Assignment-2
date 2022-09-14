@@ -1,45 +1,54 @@
 @page
-@model Assignment_2.Pages.Orders.IndexModel
+@model Assignment_2.Pages.Customer.IndexModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Active Orders</h1>
+<h1>Available Products</h1>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Order[0].CustomerName)
+                @Html.DisplayNameFor(model => model.Items[0].Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Order[0].CustomerAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Order[0].OrderTotal)
+                @Html.DisplayNameFor(model => model.Items[0].Price)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Order) {
+@foreach (var item in Model.Items) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomerName)
+                @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomerAddress)
+                @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OrderTotal)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.OrderID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.OrderID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.OrderID">Decline</a>
-            </td>
+                <a asp-page="./Details" asp-route-id="@item.ItemID">Details</a>
+                <br>
+                @if (item.Status == "Not in Cart")
+                {
+                    <form method="post">
+                        <input type="hidden" asp-for="ItemToAdd" value="@item.ItemID" />
+                        <input type="submit" asp-page-handler="AddItem" asp-route-id="@item.ItemID" value="Add to Cart" class="btn btn-primary btn-sm" />
+                    </form>
+                }
+                @if (item.Status == "In Cart"){
+                    <p>Already in Cart</p>
+                }   
+                </td>
         </tr>
 }
     </tbody>
 </table>
+
+<a asp-page="./Cart">View Cart</a>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

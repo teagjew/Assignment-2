@@ -7,13 +7,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Assignment_2.Models;
 
-namespace Assignment_2.Pages.Orders
+namespace Assignment_2.Pages.DeliveryPerson
 {
     public class CreateModel : PageModel
     {
-        private readonly Assignment_2.Models.OrderContext _context;
+        private readonly Assignment_2.Models.DatabaseContext _context;
 
-        public CreateModel(Assignment_2.Models.OrderContext context)
+        public CreateModel(Assignment_2.Models.DatabaseContext context)
         {
             _context = context;
         }
