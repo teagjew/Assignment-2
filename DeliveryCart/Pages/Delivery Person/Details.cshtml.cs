@@ -19,6 +19,7 @@ namespace Assignment_2.Pages.DeliveryPerson
         }
 
         public Order Order { get; set; }
+
         [BindProperty]
         public int ItemIDToDelete {get; set;}
 
@@ -40,16 +41,25 @@ namespace Assignment_2.Pages.DeliveryPerson
 
         public IActionResult OnPostDeleteItem(int? id)
         {
+            Order = _context.Order.Include(m => m.OrderedItems).FirstOrDefault(m => m.OrderID == id);
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            Item Item = _context.Item.FirstOrDefault(r => r.ItemID == ItemIDToDelete);
+            OrderedItem OrderedItem = _context.OrderedItems.FirstOrDefault(r => (r.OrderID == id) && (r.ItemID == ItemIDToDelete));
+            Item ItemBeingDeleted = _context.Item.FirstOrDefault(i => i.ItemID == ItemIDToDelete);
+
+            double NewTotal = Order.OrderTotal - ItemBeingDeleted.Price;
             
-            if (Item != null)
+            if (OrderedItem != null)
             {
-                _context.Remove(Item);
+                _context.Remove(OrderedItem);
+                _context.SaveChanges();
+
+                var UpdatedOrder = _context.Order.Where(o => o.OrderID == id).ToList();
+                UpdatedOrder.ForEach(o => o.OrderTotal=NewTotal);
                 _context.SaveChanges();
             }
 

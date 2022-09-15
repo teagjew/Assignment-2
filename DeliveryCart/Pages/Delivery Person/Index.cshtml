@@ -23,6 +23,7 @@
                 @Html.DisplayNameFor(model => model.Order[0].Status)
             </th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -48,6 +49,8 @@
                     <input type="hidden" asp-for="OrderToUpdate" value="@item.OrderID">
                     <input type="submit" asp-page-handler="UpdateStatus" asp-route-id="@item.OrderID" value="Accept" class="btn btn-primary" />
                 </form>
+            </td>
+            <td>
                 <form method="post"> 
                     <input type="hidden" asp-for="OrderToUpdate" value="@item.OrderID">
                     <input type="submit" asp-page-handler="DeclineOrder" asp-route-id="@item.OrderID" value="Decline" class="btn btn-danger" />
@@ -97,7 +100,7 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </th>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.OrderID">Edit</a> |
+                <a asp-page="./Edit" asp-route-id="@item.OrderID">Change Status</a> |
                 <a asp-page="./Details" asp-route-id="@item.OrderID">Details</a>
             </td>
         </tr>

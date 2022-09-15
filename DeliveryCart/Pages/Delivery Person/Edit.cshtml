@@ -5,9 +5,8 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Change</h1>
+<h1>Change Order Status</h1>
 
-<h4>Status</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -23,6 +22,7 @@
                 </select>
                 <span asp-validation-for="Order.Status" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group"> 
                 <input type="hidden" asp-for="OrderToUpdate" value="@Model.Order.OrderID">
                 <input type="submit" asp-page-handler="UpdateStatus" asp-route-id="@Model.Order.OrderID" value="Save" class="btn btn-primary" />
@@ -30,9 +30,9 @@
         </form>
     </div>
 </div>
-
+<br>
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index">Back to Orders</a>
 </div>
 
 @section Scripts {

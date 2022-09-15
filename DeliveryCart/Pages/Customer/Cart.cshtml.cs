@@ -22,8 +22,6 @@ namespace Assignment_2.Pages.Customer
 
         public List<OrderedItem> OrderedItems = new List<OrderedItem>();
 
-        public List<Item> ClearItems = new List<Item>();
-
         [BindProperty]
         public int ItemToDelete { get; set; }
 
@@ -41,24 +39,6 @@ namespace Assignment_2.Pages.Customer
 
             foreach(var item in Items){
                 OrderTotal += item.Price;
-            }
-        }
-
-        public void ClearCartDelete()
-        {
-            foreach(var item in Items)
-            {
-                Item OldItem = new Item() { ItemID = item.ItemID, Status = "Not in Cart" };
-
-                ClearItems.Add(OldItem);
-            }
-
-            foreach(var item in ClearItems)
-            {
-                using(_context)
-                {
-                    _context.Item.Attach(item).Property(i => i.Status).IsModified = true;
-                }
             }
         }
 

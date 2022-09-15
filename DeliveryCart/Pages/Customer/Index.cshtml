@@ -17,6 +17,7 @@
                 @Html.DisplayNameFor(model => model.Items[0].Price)
             </th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -30,7 +31,8 @@
             </td>
             <td>
                 <a asp-page="./Details" asp-route-id="@item.ItemID">Details</a>
-                <br>
+            </td>
+            <td>
                 @if (item.Status == "Not in Cart")
                 {
                     <form method="post">
@@ -41,7 +43,7 @@
                 @if (item.Status == "In Cart"){
                     <p>Already in Cart</p>
                 }   
-                </td>
+            </td>
         </tr>
 }
     </tbody>
