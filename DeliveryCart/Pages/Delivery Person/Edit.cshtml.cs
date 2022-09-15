@@ -21,6 +21,10 @@ namespace Assignment_2.Pages.DeliveryPerson
 
         [BindProperty]
         public Order Order { get; set; }
+        [BindProperty]
+        public int OrderToUpdate {get; set;}
+        [BindProperty]
+        public string UpdatedStatus {get; set;}
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -67,6 +71,20 @@ namespace Assignment_2.Pages.DeliveryPerson
 
             return RedirectToPage("./Index");
         }
+
+        public async Task<IActionResult> OnPostUpdateStatusAsync(int id, string UpdatedStatus)
+        {
+            Order Order = new Order() { OrderID = id, Status = UpdatedStatus };
+            
+            using(_context)
+            {
+                _context.Order.Attach(Order).Property(i => i.Status).IsModified = true;
+                _context.SaveChanges();
+            }
+            return RedirectToPage("./Index");
+        }
+
+        
 
         private bool OrderExists(int id)
         {

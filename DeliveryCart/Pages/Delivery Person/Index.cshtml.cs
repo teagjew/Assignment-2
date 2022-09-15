@@ -19,6 +19,8 @@ namespace Assignment_2.Pages.DeliveryPerson
         }
 
         public IList<Order> Order { get;set; } = default!;
+        [BindProperty]
+        public int OrderToUpdate {get; set;}
 
         public async Task OnGetAsync()
         {
@@ -27,5 +29,30 @@ namespace Assignment_2.Pages.DeliveryPerson
                 Order = await _context.Order.ToListAsync();
             }
         }
+
+        public async Task<IActionResult> OnPostUpdateStatusAsync(int id, string UpdatedStatus)
+        {
+            Order Order = new Order() { OrderID = id, Status = "Accepted" };
+            
+            using(_context)
+            {
+                _context.Order.Attach(Order).Property(i => i.Status).IsModified = true;
+                _context.SaveChanges();
+            }
+             return RedirectToPage("./Index");
+        }
+
+        public async Task<IActionResult> OnPostDeclineOrderAsync(int id, string UpdatedStatus)
+        {
+            Order Order = new Order() { OrderID = id, Status = "Declined" };
+            
+            using(_context)
+            {
+                _context.Order.Attach(Order).Property(i => i.Status).IsModified = true;
+                _context.SaveChanges();
+            }
+             return RedirectToPage("./Index");
+        }
+
     }
 }

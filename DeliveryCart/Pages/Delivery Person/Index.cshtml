@@ -27,6 +27,8 @@
     </thead>
     <tbody>
 @foreach (var item in Model.Order) {
+    @if (item.Status == "Pending")
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.CustomerName)
@@ -41,10 +43,18 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </th>
             <td>
-                <a asp-page="./Details" asp-route-id="@item.OrderID">Accept</a> |
-                <a asp-page="./Decline" asp-route-id="@item.OrderID">Decline</a>
+                @* <a asp-page="./Details" asp-route-id="@item.OrderID">Accept</a> *@
+                <form method="post"> 
+                    <input type="hidden" asp-for="OrderToUpdate" value="@item.OrderID">
+                    <input type="submit" asp-page-handler="UpdateStatus" asp-route-id="@item.OrderID" value="Accept" class="btn btn-primary" />
+                </form>
+                <form method="post"> 
+                    <input type="hidden" asp-for="OrderToUpdate" value="@item.OrderID">
+                    <input type="submit" asp-page-handler="DeclineOrder" asp-route-id="@item.OrderID" value="Decline" class="btn btn-danger" />
+                </form> 
             </td>
         </tr>
+    }
 }
     </tbody>
 </table>
@@ -71,6 +81,8 @@
     </thead>
     <tbody>
 @foreach (var item in Model.Order) {
+    @if ((item.Status != "Pending") && (item.Status != "Declined"))
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.CustomerName)
@@ -89,6 +101,7 @@
                 <a asp-page="./Details" asp-route-id="@item.OrderID">Details</a>
             </td>
         </tr>
+    } 
 }
     </tbody>
 </table>
