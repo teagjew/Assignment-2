@@ -30,7 +30,7 @@ namespace Assignment_2.Pages.DeliveryPerson
                 return NotFound();
             }
 
-            Order = await _context.Order.Include(m => m.OrderedItems).FirstOrDefaultAsync(m => m.OrderID == id);
+            Order = await _context.Order.Include(m => m.OrderedItems).ThenInclude(oi => oi.Item).FirstOrDefaultAsync(m => m.OrderID == id);
 
             if (Order == null)
             {
@@ -41,7 +41,7 @@ namespace Assignment_2.Pages.DeliveryPerson
 
         public IActionResult OnPostDeleteItem(int? id)
         {
-            Order = _context.Order.Include(m => m.OrderedItems).FirstOrDefault(m => m.OrderID == id);
+            Order = _context.Order.Include(m => m.OrderedItems).ThenInclude(oi => oi.Item).FirstOrDefault(m => m.OrderID == id);
 
             if (!ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace Assignment_2.Pages.DeliveryPerson
                 _context.SaveChanges();
             }
 
-            Order = _context.Order.Include(m => m.OrderedItems).FirstOrDefault(m => m.OrderID == id);
+            Order = _context.Order.Include(m => m.OrderedItems).ThenInclude(oi => oi.Item).FirstOrDefault(m => m.OrderID == id);
 
             return Page();
         }        

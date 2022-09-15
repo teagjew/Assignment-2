@@ -30,17 +30,17 @@
             @Html.DisplayFor(model => model.Order.OrderTotal)
         </dd>
 
-        @foreach(var r in Model.Order.OrderedItems)
+        @foreach(var item in Model.Order.OrderedItems)
         {
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => r.Item.Name)
+                @Html.DisplayNameFor(model => item.Item.Name)
             </dt>
             <dd class="col-sm-1">
-                @Html.DisplayFor(model => r.Item.Name)
+                @Html.DisplayFor(model => item.Item.Name)
             </dd>
             <dd class="col-sm-9">
                 <form method="post">
-                    <input type="hidden" asp-for="ItemIDToDelete" value="@r.ItemID" />
+                    <input type="hidden" asp-for="ItemIDToDelete" value="@item.ItemID" />
                     <input type="submit" asp-page-handler="DeleteItem" asp-route-id="@Model.Order.OrderID" value="Item Unavailable" class="btn btn-danger btn-sm" />
                 </form>
             </dd>
