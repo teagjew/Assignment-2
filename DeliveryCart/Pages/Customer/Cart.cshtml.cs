@@ -22,6 +22,8 @@ namespace Assignment_2.Pages.Customer
 
         public List<OrderedItem> OrderedItems = new List<OrderedItem>();
 
+        public List<Item> ClearItems = new List<Item>();
+
         [BindProperty]
         public int ItemToDelete { get; set; }
 
@@ -42,6 +44,24 @@ namespace Assignment_2.Pages.Customer
             }
         }
 
+        public void ClearCartDelete()
+        {
+            foreach(var item in Items)
+            {
+                Item OldItem = new Item() { ItemID = item.ItemID, Status = "Not in Cart" };
+
+                ClearItems.Add(OldItem);
+            }
+
+            foreach(var item in ClearItems)
+            {
+                using(_context)
+                {
+                    _context.Item.Attach(item).Property(i => i.Status).IsModified = true;
+                }
+            }
+        }
+
         public async Task<IActionResult> OnPostCreateOrderAsync()
         {
             Items = _context.Item.Where(i => i.Status == "In Cart").ToList();
@@ -57,19 +77,18 @@ namespace Assignment_2.Pages.Customer
                 OrderedItem orderedItem = new OrderedItem { Item = item, Order = OrderToAdd };
 
                 OrderedItems.Add(orderedItem);
-
-                Item oldItem = new Item() { ItemID = item.ItemID, Status = "Not in Cart" };
-
-                using(_context)
-                {
-                    _context.Item.Attach(oldItem).Property(i => i.Status).IsModified = true;
-                    _context.SaveChanges();
-                }
             }
 
             _context.OrderedItems.AddRange(OrderedItems);
             _context.Order.Add(OrderToAdd);
             _context.SaveChanges();
+
+            using(_context)
+            {
+                var ClearCart = _context.Item.ToList();
+                ClearCart.ForEach(i => i.Status="Not in Cart");
+                _context.SaveChanges();
+            }
 
             return RedirectToPage("./Index");
         }

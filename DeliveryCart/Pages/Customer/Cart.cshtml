@@ -61,10 +61,7 @@
     </div>
 </div>
 <hr />
-@if (Model.CustomerName != null)
-{
-    <p>Order has been submitted!</p>
-}
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
