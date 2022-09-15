@@ -20,7 +20,7 @@ namespace Assignment_2.Pages.Customer
 
         public IList<Item> Items { get; set; }
 
-        public List<OrderedItem> OrderedItems { get; set; }
+        public List<OrderedItem> OrderedItems = new List<OrderedItem>();
 
         [BindProperty]
         public int ItemToDelete { get; set; }
@@ -31,29 +31,47 @@ namespace Assignment_2.Pages.Customer
         [BindProperty]
         public string CustomerAddress { get; set; }
 
+        public double OrderTotal = 0;
+
         public void OnGet()
         {
             Items = _context.Item.Where(i => i.Status == "In Cart").ToList();
+
+            foreach(var item in Items){
+                OrderTotal += item.Price;
+            }
         }
 
         public async Task<IActionResult> OnPostCreateOrderAsync()
         {
-            double ot = 0;
-            foreach(var item in Items)
-            {
-                ot += item.Price;
+            Items = _context.Item.Where(i => i.Status == "In Cart").ToList();
 
-                OrderedItem orderedItem = new OrderedItem { ItemID = item.ItemID , Item = item};
-
-                OrderedItems.Add(orderedItem);
+            foreach(var item in Items){
+                OrderTotal += item.Price;
             }
 
-            Order OrderToAdd = new Order { CustomerName = CustomerName, CustomerAddress = CustomerAddress, OrderTotal = ot, OrderedItems = OrderedItems };
+            Order OrderToAdd = new Order { CustomerName = CustomerName, CustomerAddress = CustomerAddress, OrderTotal = OrderTotal, Status = "Pending" };
 
+            foreach(var item in Items)
+            {
+                OrderedItem orderedItem = new OrderedItem { Item = item, Order = OrderToAdd };
+
+                OrderedItems.Add(orderedItem);
+
+                Item oldItem = new Item() { ItemID = item.ItemID, Status = "Not in Cart" };
+
+                using(_context)
+                {
+                    _context.Item.Attach(oldItem).Property(i => i.Status).IsModified = true;
+                    _context.SaveChanges();
+                }
+            }
+
+            _context.OrderedItems.AddRange(OrderedItems);
             _context.Order.Add(OrderToAdd);
             _context.SaveChanges();
 
-            return Page();
+            return RedirectToPage("./Index");
         }
 
         public async Task<IActionResult> OnPostDeleteItemAsync(int id){
@@ -66,7 +84,7 @@ namespace Assignment_2.Pages.Customer
                 _context.SaveChanges();
             }
 
-            return Page();
+            return RedirectToPage("./Cart");
         }
     }
 }

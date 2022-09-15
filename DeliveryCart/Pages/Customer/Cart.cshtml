@@ -22,8 +22,8 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
-@foreach (var item in Model.Items) {
+    
+    @foreach (var item in Model.Items) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -35,16 +35,16 @@
                 <form method="post">
                     <input type="hidden" asp-for="ItemToDelete" value="@item.ItemID" />
                     <input type="submit" asp-page-handler="DeleteItem" asp-route-id="@item.ItemID" value="Delete" class="btn btn-danger btn-sm" />
-                </form>
-            }  
+                </form>  
             </td>
         </tr>
-}
-    </tbody>
+    }
+
 </table>
 
 <div class="row">
     <div class="col-md-4">
+        <div>Order Total: @Model.OrderTotal</div>
         <form method="post">
             <div class="form-group">
                 <label asp-for="CustomerName" class="control-label"></label>

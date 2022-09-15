@@ -31,7 +31,7 @@ namespace Assignment_2.Pages.Customer
             }
         }
 
-        public void OnPostAddItem(int id)
+        public async Task<IActionResult> OnPostAddItemAsync(int id)
         {
             Item item = new Item() { ItemID = id, Status = "In Cart" };
             
@@ -41,9 +41,7 @@ namespace Assignment_2.Pages.Customer
                 _context.SaveChanges();
             }
 
-            foreach(var it in Items){
-                Items.Add(_context.Item.FirstOrDefault(i => i.ItemID == it.ItemID));
-            }
+            return RedirectToPage("./Index");
 
         }
     }
