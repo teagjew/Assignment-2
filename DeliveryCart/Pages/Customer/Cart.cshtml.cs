@@ -58,15 +58,9 @@ namespace Assignment_2.Pages.Customer
             return RedirectToPage("./Index");
         }
 
-        public async Task<IActionResult> OnPostDeleteItemAsync(int id){
-            
-            Item item = new Item() { ItemID = id, Status = "Not in Cart" };
-            
-            using(_context)
-            {
-                _context.Item.Attach(item).Property(i => i.Status).IsModified = true;
-                _context.SaveChanges();
-            }
+        public async Task<IActionResult> OnPostDeleteItemAsync(int id)
+        {    
+            await _context.RemoveCartItem(id);
 
             return RedirectToPage("./Cart");
         }

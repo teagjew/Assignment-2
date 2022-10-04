@@ -39,9 +39,10 @@ namespace Assignment_2.Models
             return await Item.Where(i => i.Status == "In Cart").ToListAsync();
         }
 
-        // public static double OrderTotal()
+        // public async virtual Task<double> OrderTotal()
         // {
-        //     List<Item> Items = Item.Where(i => i.Status == "In Cart").ToList();
+        //     return await 
+        //     var Items = Item.Where(i => i.Status == "In Cart").ToListAsync();
 
         //     public double total = 0;
 
@@ -49,7 +50,7 @@ namespace Assignment_2.Models
         //         ot += item.Price;
         //     }
 
-        //     return total;
+        //     return await total;
         // }
 
         public async virtual Task CreateOrder(string cn, string ca, double ot)
@@ -75,6 +76,61 @@ namespace Assignment_2.Models
             Items.ForEach(i => i.Status="Not in Cart");
             await SaveChangesAsync();
         }
-    }
 
+        public async virtual Task RemoveCartItem(int id)
+        {
+            Item item = new Item() { ItemID = id, Status = "Not in Cart" };
+            Item.Attach(item).Property(i => i.Status).IsModified = true;
+            SaveChangesAsync();
+        }
+
+        public async virtual Task<List<Order>> ListOrders()
+        {
+            return await Order.ToListAsync();
+        }
+
+        public async virtual Task AcceptOrder(int id)
+        {
+            Order order = new Order() { OrderID = id, Status = "Accepted" };
+            Order.Attach(order).Property(i => i.Status).IsModified = true;
+            SaveChangesAsync();
+        }
+
+        public async virtual Task DeclineOrder(int id)
+        {
+            Order order = new Order() { OrderID = id, Status = "Declined" };
+            Order.Attach(order).Property(i => i.Status).IsModified = true;
+            SaveChangesAsync();
+        }
+
+        public async virtual Task UpdateStatus(int id, string status)
+        {
+            Order order = new Order() { OrderID = id, Status = status };
+            Order.Attach(order).Property(i => i.Status).IsModified = true;
+            SaveChangesAsync();
+        }
+
+        public async virtual Task<Order> OrderDetails(int id)
+        {
+            return await Order.Include(o => o.OrderedItems).ThenInclude(oi => oi.Item).FirstOrDefaultAsync(o => o.OrderID == id);
+        }
+
+        public async virtual Task RemoveOrderItem(int oid, int did, double total)
+        {
+            OrderedItem OrderedItem = OrderedItems.FirstOrDefault(r => (r.OrderID == oid) && (r.ItemID == did));
+            Item ItemBeingDeleted = Item.FirstOrDefault(i => i.ItemID == did);
+
+            double NewTotal = total - ItemBeingDeleted.Price;
+            
+            if (OrderedItem != null)
+            {
+                Remove(OrderedItem);
+                SaveChangesAsync();
+
+                var UpdatedOrder = Order.Where(o => o.OrderID == oid).ToList();
+                UpdatedOrder.ForEach(o => o.OrderTotal=NewTotal);
+                SaveChangesAsync();
+            }
+        }
+    }
 }

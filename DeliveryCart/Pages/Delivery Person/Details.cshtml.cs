@@ -23,14 +23,14 @@ namespace Assignment_2.Pages.DeliveryPerson
         [BindProperty]
         public int ItemIDToDelete {get; set;}
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Order = await _context.Order.Include(m => m.OrderedItems).ThenInclude(oi => oi.Item).FirstOrDefaultAsync(m => m.OrderID == id);
+            Order = await _context.OrderDetails(id);
 
             if (Order == null)
             {
@@ -39,33 +39,35 @@ namespace Assignment_2.Pages.DeliveryPerson
             return Page();
         }
 
-        public IActionResult OnPostDeleteItem(int? id)
+        public async Task<IActionResult> OnPostDeleteItemAsync(int id)
         {
-            Order = _context.Order.Include(m => m.OrderedItems).ThenInclude(oi => oi.Item).FirstOrDefault(m => m.OrderID == id);
+            // Order = _context.Order.Include(m => m.OrderedItems).ThenInclude(oi => oi.Item).FirstOrDefault(m => m.OrderID == id);
 
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            // if (!ModelState.IsValid)
+            // {
+            //     return Page();
+            // }
 
-            OrderedItem OrderedItem = _context.OrderedItems.FirstOrDefault(r => (r.OrderID == id) && (r.ItemID == ItemIDToDelete));
-            Item ItemBeingDeleted = _context.Item.FirstOrDefault(i => i.ItemID == ItemIDToDelete);
+            // OrderedItem OrderedItem = _context.OrderedItems.FirstOrDefault(r => (r.OrderID == id) && (r.ItemID == ItemIDToDelete));
+            // Item ItemBeingDeleted = _context.Item.FirstOrDefault(i => i.ItemID == ItemIDToDelete);
 
-            double NewTotal = Order.OrderTotal - ItemBeingDeleted.Price;
+            // double NewTotal = Order.OrderTotal - ItemBeingDeleted.Price;
             
-            if (OrderedItem != null)
-            {
-                _context.Remove(OrderedItem);
-                _context.SaveChanges();
+            // if (OrderedItem != null)
+            // {
+            //     _context.Remove(OrderedItem);
+            //     _context.SaveChanges();
 
-                var UpdatedOrder = _context.Order.Where(o => o.OrderID == id).ToList();
-                UpdatedOrder.ForEach(o => o.OrderTotal=NewTotal);
-                _context.SaveChanges();
-            }
+            //     var UpdatedOrder = _context.Order.Where(o => o.OrderID == id).ToList();
+            //     UpdatedOrder.ForEach(o => o.OrderTotal=NewTotal);
+            //     _context.SaveChanges();
+            // }
 
-            Order = _context.Order.Include(m => m.OrderedItems).ThenInclude(oi => oi.Item).FirstOrDefault(m => m.OrderID == id);
+            //Order = _context.Order.Include(m => m.OrderedItems).ThenInclude(oi => oi.Item).FirstOrDefault(m => m.OrderID == id);
 
-            return Page();
+            await _context.RemoveOrderItem(id, ItemIDToDelete, Order.OrderTotal);
+
+            return RedirectToPage("./Details");;
         }        
     }
 }

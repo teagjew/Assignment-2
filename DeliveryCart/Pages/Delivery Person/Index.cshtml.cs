@@ -24,34 +24,21 @@ namespace Assignment_2.Pages.DeliveryPerson
 
         public async Task OnGetAsync()
         {
-            if (_context.Order != null)
-            {
-                Order = await _context.Order.ToListAsync();
-            }
+            Order = await _context.ListOrders();
         }
 
         public async Task<IActionResult> OnPostUpdateStatusAsync(int id, string UpdatedStatus)
         {
-            Order Order = new Order() { OrderID = id, Status = "Accepted" };
-            
-            using(_context)
-            {
-                _context.Order.Attach(Order).Property(i => i.Status).IsModified = true;
-                _context.SaveChanges();
-            }
-             return RedirectToPage("./Index");
+            await _context.AcceptOrder(id);
+
+            return RedirectToPage("./Index");
         }
 
         public async Task<IActionResult> OnPostDeclineOrderAsync(int id, string UpdatedStatus)
         {
-            Order Order = new Order() { OrderID = id, Status = "Declined" };
-            
-            using(_context)
-            {
-                _context.Order.Attach(Order).Property(i => i.Status).IsModified = true;
-                _context.SaveChanges();
-            }
-             return RedirectToPage("./Index");
+            await _context.DeclineOrder(id);
+
+            return RedirectToPage("./Index");
         }
 
     }

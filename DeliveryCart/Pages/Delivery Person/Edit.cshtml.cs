@@ -26,14 +26,14 @@ namespace Assignment_2.Pages.DeliveryPerson
         [BindProperty]
         public string UpdatedStatus {get; set;}
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Order = await _context.Order.FirstOrDefaultAsync(p => p.OrderID == id);
+            Order = await _context.OrderDetails(id);
 
             if (Order == null)
             {
@@ -42,53 +42,11 @@ namespace Assignment_2.Pages.DeliveryPerson
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            _context.Attach(Order).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!OrderExists(Order.OrderID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToPage("./Index");
-        }
-
         public async Task<IActionResult> OnPostUpdateStatusAsync(int id, string UpdatedStatus)
         {
-            Order Order = new Order() { OrderID = id, Status = UpdatedStatus };
-            
-            using(_context)
-            {
-                _context.Order.Attach(Order).Property(i => i.Status).IsModified = true;
-                _context.SaveChanges();
-            }
+            await _context.UpdateStatus(id, UpdatedStatus);
+
             return RedirectToPage("./Index");
-        }
-
-        
-
-        private bool OrderExists(int id)
-        {
-            return _context.Order.Any(e => e.OrderID == id);
         }
     }
 }
