@@ -25,24 +25,14 @@ namespace Assignment_2.Pages.Customer
 
         public async Task OnGetAsync()
         {
-            if (_context.Item != null)
-            {
-                Items = await _context.Item.ToListAsync();
-            }
+            Items = await _context.ListItems();
         }
 
         public async Task<IActionResult> OnPostAddItemAsync(int id)
         {
-            Item item = new Item() { ItemID = id, Status = "In Cart" };
-            
-            using(_context)
-            {
-                _context.Item.Attach(item).Property(i => i.Status).IsModified = true;
-                _context.SaveChanges();
-            }
+            await _context.AddToCart(id);
 
             return RedirectToPage("./Index");
-
         }
     }
 }

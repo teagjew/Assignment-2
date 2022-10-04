@@ -8,61 +8,61 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DeliveryCart
 build_property.RootNamespace = DeliveryCart
-build_property.ProjectDir = c:\Users\alec_\OneDrive - West Texas A and M University\School\Fall 2022\Programming\Assignment 2\DeliveryCart\
+build_property.ProjectDir = C:\Users\teaan\Documents\CIDM 4390\Assignment 4\Assignment-2\DeliveryCart\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\alec_\OneDrive - West Texas A and M University\School\Fall 2022\Programming\Assignment 2\DeliveryCart
+build_property.MSBuildProjectDirectory = C:\Users\teaan\Documents\CIDM 4390\Assignment 4\Assignment-2\DeliveryCart
 build_property._RazorSourceGeneratorDebug = 
 
-[c:/Users/alec_/OneDrive - West Texas A and M University/School/Fall 2022/Programming/Assignment 2/DeliveryCart/Pages/Customer/Cart.cshtml]
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 4/Assignment-2/DeliveryCart/Pages/Customer/Cart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcQ2FydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/alec_/OneDrive - West Texas A and M University/School/Fall 2022/Programming/Assignment 2/DeliveryCart/Pages/Customer/Details.cshtml]
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 4/Assignment-2/DeliveryCart/Pages/Customer/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/alec_/OneDrive - West Texas A and M University/School/Fall 2022/Programming/Assignment 2/DeliveryCart/Pages/Customer/Index.cshtml]
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 4/Assignment-2/DeliveryCart/Pages/Customer/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/alec_/OneDrive - West Texas A and M University/School/Fall 2022/Programming/Assignment 2/DeliveryCart/Pages/Delivery Person/Details.cshtml]
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 4/Assignment-2/DeliveryCart/Pages/Delivery Person/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcnkgUGVyc29uXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/alec_/OneDrive - West Texas A and M University/School/Fall 2022/Programming/Assignment 2/DeliveryCart/Pages/Delivery Person/Edit.cshtml]
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 4/Assignment-2/DeliveryCart/Pages/Delivery Person/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcnkgUGVyc29uXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/alec_/OneDrive - West Texas A and M University/School/Fall 2022/Programming/Assignment 2/DeliveryCart/Pages/Delivery Person/Index.cshtml]
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 4/Assignment-2/DeliveryCart/Pages/Delivery Person/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsaXZlcnkgUGVyc29uXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/alec_/OneDrive - West Texas A and M University/School/Fall 2022/Programming/Assignment 2/DeliveryCart/Pages/Error.cshtml]
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 4/Assignment-2/DeliveryCart/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/alec_/OneDrive - West Texas A and M University/School/Fall 2022/Programming/Assignment 2/DeliveryCart/Pages/Index.cshtml]
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 4/Assignment-2/DeliveryCart/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/alec_/OneDrive - West Texas A and M University/School/Fall 2022/Programming/Assignment 2/DeliveryCart/Pages/Privacy.cshtml]
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 4/Assignment-2/DeliveryCart/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/alec_/OneDrive - West Texas A and M University/School/Fall 2022/Programming/Assignment 2/DeliveryCart/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 4/Assignment-2/DeliveryCart/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/alec_/OneDrive - West Texas A and M University/School/Fall 2022/Programming/Assignment 2/DeliveryCart/Pages/_ViewImports.cshtml]
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 4/Assignment-2/DeliveryCart/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/alec_/OneDrive - West Texas A and M University/School/Fall 2022/Programming/Assignment 2/DeliveryCart/Pages/_ViewStart.cshtml]
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 4/Assignment-2/DeliveryCart/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/alec_/OneDrive - West Texas A and M University/School/Fall 2022/Programming/Assignment 2/DeliveryCart/Pages/Shared/_Layout.cshtml]
+[C:/Users/teaan/Documents/CIDM 4390/Assignment 4/Assignment-2/DeliveryCart/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-tgw3svdg09

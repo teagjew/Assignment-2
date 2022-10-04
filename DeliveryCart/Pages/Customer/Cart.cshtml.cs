@@ -18,7 +18,7 @@ namespace Assignment_2.Pages.Customer
             _context = context;
         }
 
-        public IList<Item> Items { get; set; }
+        public List<Item> Items { get; set; }
 
         public List<OrderedItem> OrderedItems = new List<OrderedItem>();
 
@@ -33,10 +33,11 @@ namespace Assignment_2.Pages.Customer
 
         public double OrderTotal = 0;
 
-        public void OnGet()
+        public async Task OnGet()
         {
-            Items = _context.Item.Where(i => i.Status == "In Cart").ToList();
+            Items = await _context.ListCartItems();
 
+            //OrderTotal = await _context.OrderTotal();
             foreach(var item in Items){
                 OrderTotal += item.Price;
             }
@@ -44,31 +45,15 @@ namespace Assignment_2.Pages.Customer
 
         public async Task<IActionResult> OnPostCreateOrderAsync()
         {
-            Items = _context.Item.Where(i => i.Status == "In Cart").ToList();
-
+            //OrderTotal = await _context.OrderTotal();
+            Items = await _context.ListCartItems();
             foreach(var item in Items){
                 OrderTotal += item.Price;
             }
 
-            Order OrderToAdd = new Order { CustomerName = CustomerName, CustomerAddress = CustomerAddress, OrderTotal = OrderTotal, Status = "Pending" };
+            await _context.CreateOrder(CustomerName, CustomerAddress, OrderTotal);
 
-            foreach(var item in Items)
-            {
-                OrderedItem orderedItem = new OrderedItem { Item = item, Order = OrderToAdd };
-
-                OrderedItems.Add(orderedItem);
-            }
-
-            _context.OrderedItems.AddRange(OrderedItems);
-            _context.Order.Add(OrderToAdd);
-            _context.SaveChanges();
-
-            using(_context)
-            {
-                var ClearCart = _context.Item.ToList();
-                ClearCart.ForEach(i => i.Status="Not in Cart");
-                _context.SaveChanges();
-            }
+            await _context.ClearCart();
 
             return RedirectToPage("./Index");
         }

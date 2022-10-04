@@ -26,14 +26,14 @@ namespace Assignment_2.Pages.Customer
         [BindProperty]
         public int ItemToAdd { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Item = await _context.Item.FirstOrDefaultAsync(i => i.ItemID == id);
+            Item = await _context.ItemDetails(id);
 
             if (Item == null)
             {
