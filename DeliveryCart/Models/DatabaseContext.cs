@@ -39,19 +39,15 @@ namespace Assignment_2.Models
             return await Item.Where(i => i.Status == "In Cart").ToListAsync();
         }
 
-        // public async virtual Task<double> OrderTotal()
-        // {
-        //     return await 
-        //     var Items = Item.Where(i => i.Status == "In Cart").ToListAsync();
-
-        //     public double total = 0;
-
-        //     foreach(var item in Items){
-        //         ot += item.Price;
-        //     }
-
-        //     return await total;
-        // }
+        public virtual double CartTotal()
+        {
+            var Items = Item.Where(i => i.Status == "In Cart").ToList();
+            double total = 0;
+            foreach(var item in Items){
+                total += item.Price;
+            }
+            return total;
+        }
 
         public async virtual Task CreateOrder(string cn, string ca, double ot)
         {
@@ -115,16 +111,16 @@ namespace Assignment_2.Models
             return await Order.Include(o => o.OrderedItems).ThenInclude(oi => oi.Item).FirstOrDefaultAsync(o => o.OrderID == id);
         }
 
-        public async virtual Task RemoveOrderItem(int oid, int did, double total)
+        public async virtual Task RemoveOrderItem(int oid, int iid, double total)
         {
-            OrderedItem OrderedItem = OrderedItems.FirstOrDefault(r => (r.OrderID == oid) && (r.ItemID == did));
-            Item ItemBeingDeleted = Item.FirstOrDefault(i => i.ItemID == did);
+            OrderedItem OrderedItem = OrderedItems.FirstOrDefault(o => (o.OrderID == oid) && (o.ItemID == iid));
+            Item ItemBeingDeleted = Item.FirstOrDefault(i => i.ItemID == iid);
 
             double NewTotal = total - ItemBeingDeleted.Price;
             
             if (OrderedItem != null)
             {
-                Remove(OrderedItem);
+                OrderedItems.Remove(OrderedItem);
                 SaveChangesAsync();
 
                 var UpdatedOrder = Order.Where(o => o.OrderID == oid).ToList();

@@ -37,19 +37,13 @@ namespace Assignment_2.Pages.Customer
         {
             Items = await _context.ListCartItems();
 
-            //OrderTotal = await _context.OrderTotal();
-            foreach(var item in Items){
-                OrderTotal += item.Price;
-            }
+            OrderTotal = _context.CartTotal();
         }
 
         public async Task<IActionResult> OnPostCreateOrderAsync()
         {
-            //OrderTotal = await _context.OrderTotal();
+            OrderTotal = _context.CartTotal();
             Items = await _context.ListCartItems();
-            foreach(var item in Items){
-                OrderTotal += item.Price;
-            }
 
             await _context.CreateOrder(CustomerName, CustomerAddress, OrderTotal);
 
