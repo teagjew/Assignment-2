@@ -61,11 +61,13 @@ namespace DeliveryCart.Tests;
                 // Act
                 db.Item.AddRange(Items);
                 await db.CreateOrder(name, address, total);
-                //db.OrderedItems.AddRange(orderedItems);
 
                 // Assert
                 var actualOrder = await db.FindAsync<Order>(id);
-                Assert.Equal(expectedOrder, actualOrder);
+                var expectedItem = new Item{Name = "Milk", Price = 2.99, Status = "Not in Cart"};
+                var actualItem = await db.FindAsync<Item>(1);
+                //Assert.Equal(expectedOrder, actualOrder);
+                Assert.Equal(expectedItem.Status, actualItem.Status);
             }
         }
     }

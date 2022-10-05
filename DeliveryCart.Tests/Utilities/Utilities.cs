@@ -21,6 +21,12 @@ namespace DeliveryCart.Tests
             // Create a new options instance using an in-memory database and 
             // IServiceProvider that the context should resolve all of its 
             // services from.
+            
+            // protected override void OnModelCreating(ModelBuilder modelBuilder)
+            // {
+            //     modelBuilder.Entity<OrderedItem>().HasKey(oi => new { oi.OrderID, oi.ItemID });
+            // }
+            
             var builder = new DbContextOptionsBuilder<DatabaseContext>()
                 .UseInMemoryDatabase("InMemoryDb")
                 .UseInternalServiceProvider(serviceProvider);
