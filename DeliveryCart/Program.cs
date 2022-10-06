@@ -19,9 +19,12 @@ namespace Assignment_2
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
+                var db = services.GetRequiredService<DatabaseContext>();
+                db.Database.EnsureCreated();
                 try
                 {
-                    SeedData.Initialize(services);
+                    //SeedData.Initialize(services);
+                    db.SeedDatabase();
                 }
                 catch (Exception ex)
                 {
