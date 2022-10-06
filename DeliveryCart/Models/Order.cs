@@ -24,6 +24,6 @@ namespace Assignment_2.Models
 
         public string Status {get; set;}
 
-        public List<OrderedItem> OrderedItems {get; set;}
+        public List<OrderedItem>? OrderedItems {get; set;}
     }
 }
