@@ -197,4 +197,28 @@ namespace DeliveryCart.Tests;
                 Assert.Equal(expectedOrder.OrderID, actualOrder.OrderID);
             }
         }
+
+        [Fact]
+        public async Task RemoveOrderItem_ItemIsRemoved()
+        {
+            using (var db = new DatabaseContext(Utilities.TestDbContextOptions()))
+            {
+                List<Item> seedItems = DatabaseContext.GetItemsSeed();
+                List<Order> seedOrders = DatabaseContext.GetOrdersSeed();
+                List<OrderedItem> seedOrderedItems = DatabaseContext.GetOrderedItemsSeed(seedItems, seedOrders);
+                await db.AddRangeAsync(seedItems);
+                await db.AddRangeAsync(seedOrders);
+                await db.AddRangeAsync(seedOrderedItems);
+                await db.SaveChangesAsync();
+
+                List<OrderedItem> expectedOrderedItems = seedOrderedItems.ToList();
+                expectedOrderedItems.RemoveAt(0);
+
+                db.ChangeTracker.Clear();
+                await db.RemoveOrderItem(1,1,6.98);
+
+                List<OrderedItem> actualOrderedItems = await db.OrderedItems.AsNoTracking().ToListAsync();
+                Assert.Equal(expectedOrderedItems.Count(), actualOrderedItems.Count());
+            }
+        }
     }
